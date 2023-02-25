@@ -9,25 +9,25 @@ java {
 }
 
 dependencies {
-    //retrofit
+    // Retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
-    //gson
-    api "com.google.code.gson:gson:$retrofit_version"
+    // Gson
+    api 'com.google.code.gson:gson:2.9.0'
 
-    //okhttp
+    // OkHttp
     api(platform("com.squareup.okhttp3:okhttp-bom:4.9.0"))
     api("com.squareup.okhttp3:okhttp")
     api("com.squareup.okhttp3:logging-interceptor")
 
-    //paging3 common
+    // Paging3 Common
     implementation "androidx.paging:paging-common:$paging_version"
 
-    //javax inject
+    // Javax Inject
     implementation "javax.inject:javax.inject:1"
 
-    //coroutines core
+    // Coroutines core
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
 
 }
