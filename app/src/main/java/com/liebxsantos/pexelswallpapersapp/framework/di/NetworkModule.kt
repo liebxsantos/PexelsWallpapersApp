@@ -10,6 +10,7 @@ import dagger.hilt.components.SingletonComponent
 object NetworkModule {
     private const val TIMEOUT_SECONDS = 15L
 
+
 //    @Provides
 //    fun provideLoggingInterceptor(): HttpLoggingInterceptor = 
 }
