@@ -7,7 +7,9 @@ import com.liebxsantos.core.domain.model.PhotoDomain
 import com.liebxsantos.pexelswallpapersapp.framework.network.response.DataWrapperResponse
 import com.liebxsantos.pexelswallpapersapp.framework.network.response.toPhotoDomain
 
-class PopularPagingSource(private val dataSource: PopularRemoteDataSource<DataWrapperResponse>): PagingSource<Int, PhotoDomain>() {
+class PopularPagingSource(
+    private val dataSource: PopularRemoteDataSource<DataWrapperResponse>
+) : PagingSource<Int, PhotoDomain>() {
     override fun getRefreshKey(state: PagingState<Int, PhotoDomain>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
@@ -23,10 +25,10 @@ class PopularPagingSource(private val dataSource: PopularRemoteDataSource<DataWr
             LoadResult.Page(
                 data = popularResponse.photos.map { it.toPhotoDomain() },
                 prevKey = if (nextPage == PAGE_INDEX) null else nextPage - 1,
-                nextKey =if (popularResponse.perPage >= nextPage) nextPage + PAGE_INDEX else null
+                nextKey = if (popularResponse.perPage >= nextPage) nextPage + PAGE_INDEX else null
             )
 
-        } catch (e: Exception){
+        } catch (e: Exception) {
             LoadResult.Error(e)
         }
     }
