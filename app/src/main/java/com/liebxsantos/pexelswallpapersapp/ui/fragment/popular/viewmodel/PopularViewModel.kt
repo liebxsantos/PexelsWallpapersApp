@@ -1,4 +1,4 @@
-package com.liebxsantos.pexelswallpapersapp.ui.popularviewmodel
+package com.liebxsantos.pexelswallpapersapp.ui.fragment.popular.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,10 +15,6 @@ import javax.inject.Inject
 class PopularViewModel @Inject constructor(
     private val popularUseCase: GetPopularUseCase
 ): ViewModel() {
-
-    init {
-        popularWallpapers()
-    }
 
     fun popularWallpapers(): Flow<PagingData<PhotoDomain>> {
         return popularUseCase(

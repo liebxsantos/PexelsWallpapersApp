@@ -12,7 +12,6 @@ import javax.inject.Inject
 
 interface GetPopularUseCase {
     operator fun invoke(params: GetPopularParams): Flow<PagingData<PhotoDomain>>
-
     data class GetPopularParams(val pagingConfig: PagingConfig)
 }
 
@@ -22,7 +21,7 @@ class GetPopularUseCaseImpl @Inject constructor(
 
     override fun createFlowObservable(params: GetPopularParams): Flow<PagingData<PhotoDomain>> {
         return Pager(config = params.pagingConfig) {
-            repository.fetchPopular()
+            repository.fetchPopular(pages = params.pagingConfig.pageSize)
         }.flow
     }
 }

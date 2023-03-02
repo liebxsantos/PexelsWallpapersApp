@@ -4,5 +4,5 @@ import androidx.paging.PagingSource
 import com.liebxsantos.core.domain.model.PhotoDomain
 
 interface PopularRepository {
-    fun fetchPopular(): PagingSource<Int, PhotoDomain>
+    fun fetchPopular(pages: Int): PagingSource<Int, PhotoDomain>
 }

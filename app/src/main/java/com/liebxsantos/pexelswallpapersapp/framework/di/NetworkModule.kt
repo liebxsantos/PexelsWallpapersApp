@@ -64,5 +64,4 @@ object NetworkModule {
         val api = ApiClient<WallpapersApi>(BuildConfig.BASE_URL, okHttpClient, converterFactory)
         return api.createApi(WallpapersApi::class.java)
     }
-
 }
