@@ -23,7 +23,7 @@ android {
     }
 
     namespace 'com.liebxsantos.pexelswallpapersapp'
-    compileSdk 33
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.liebxsantos.pexelswallpapersapp"
