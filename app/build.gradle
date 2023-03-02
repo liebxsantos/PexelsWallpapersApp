@@ -15,10 +15,10 @@ apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     signingConfigs {
         release {
-            storeFile file('$rootDir/store/wallpapers_app_key.jks')
-            storePassword '...'
-            keyAlias 'marvel-app'
-            keyPassword '...'
+            storeFile file('C:\\Users\\liebersonsantos\\AndroidStudioProjects\\PexelsWallpapersApp\\store\\wallpapers_app_key.jks')
+            storePassword '12345678'
+            keyAlias 'wallpapers_app'
+            keyPassword '12345678'
         }
     }
 
