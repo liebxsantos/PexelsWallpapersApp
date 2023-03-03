@@ -77,10 +77,6 @@ android {
         viewBinding = true
     }
 
-    lintOptions {
-        baseline file("lint-baseline.xml")
-        checkReleaseBuilds false
-    }
 }
 
 dependencies {
