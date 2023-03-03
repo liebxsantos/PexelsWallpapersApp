@@ -24,11 +24,11 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="6sp"
+        android:textSize="11sp"
         android:fontFamily="@font/courgette"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="4dp"
-        android:layout_gravity="bottom|left"
+        android:gravity="bottom"
         android:textAllCaps="false"
         tools:text="ibweibiwbfrbfiqrbrbb"/>
 
