@@ -4,15 +4,21 @@ buildscript {
     ext.lifecycle_version = "2.5.1"
     ext.coroutines_version = "1.6.4"
     ext.hilt_version = "2.43.2"
-    ext.glide_version = "4.13.1"
+    ext.glide_version = "4.13.2"
     ext.paging_version = "3.1.1"
     ext.kotlin_version = "1.7.21"
     ext.retrofit_version = "2.9.0"
+
+    repositories {
+        google()
+        mavenCentral()
+    }
 
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+        classpath 'com.google.gms:google-services:4.3.15'
     }
 }
 
