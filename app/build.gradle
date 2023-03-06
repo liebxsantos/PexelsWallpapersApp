@@ -14,7 +14,6 @@ def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
-
     namespace 'com.liebxsantos.pexelswallpapersapp'
     compileSdkVersion 33
 
