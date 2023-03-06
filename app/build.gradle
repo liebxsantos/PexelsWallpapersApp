@@ -14,14 +14,6 @@ def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
 android {
-    signingConfigs {
-        release {
-            storeFile file("${projectDir}/store/wallpapers_app_key.jks")
-            storePassword '12345678'
-            keyAlias 'wallpapers_app'
-            keyPassword '12345678'
-        }
-    }
 
     namespace 'com.liebxsantos.pexelswallpapersapp'
     compileSdkVersion 33
@@ -54,7 +46,6 @@ android {
         }
 
         release {
-            signingConfig signingConfigs.release
             shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
