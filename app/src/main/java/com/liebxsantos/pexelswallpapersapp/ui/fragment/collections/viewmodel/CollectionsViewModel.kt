@@ -19,6 +19,6 @@ class CollectionsViewModel @Inject constructor(): ViewModel() {
 //            GetPopularUseCase.GetPopularParams(getPagingConfig())
 //        ).cachedIn(viewModelScope)
 //    }
-//
-//    private fun getPagingConfig() = PagingConfig(pageSize = 40)
+
+    private fun getPagingConfig() = PagingConfig(pageSize = 40)
 }
