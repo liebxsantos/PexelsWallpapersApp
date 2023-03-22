@@ -49,7 +49,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initViewPager(){
-        val pagerAdapter = ViewPagerAdapter(context as FragmentActivity, fragments)
+        val pagerAdapter = ViewPagerAdapter(requireActivity(), fragments)
         binding.run {
             viewPager.adapter = pagerAdapter
         }

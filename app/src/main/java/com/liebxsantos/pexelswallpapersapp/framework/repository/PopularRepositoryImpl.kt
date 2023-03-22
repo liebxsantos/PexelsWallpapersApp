@@ -15,5 +15,4 @@ class PopularRepositoryImpl @Inject constructor(
     override fun fetchPopular(pages: Int): PagingSource<Int, PhotoDomain> {
         return PopularPagingSource(remoteDataSource, pages)
     }
-
 }

@@ -20,8 +20,9 @@ class GetPopularUseCaseImpl @Inject constructor(
     ): PagingUseCase<GetPopularParams, PhotoDomain>(), GetPopularUseCase {
 
     override fun createFlowObservable(params: GetPopularParams): Flow<PagingData<PhotoDomain>> {
+        val pagingSource = repository.fetchPopular(pages = params.pagingConfig.pageSize)
         return Pager(config = params.pagingConfig) {
-            repository.fetchPopular(pages = params.pagingConfig.pageSize)
+            pagingSource
         }.flow
     }
 }

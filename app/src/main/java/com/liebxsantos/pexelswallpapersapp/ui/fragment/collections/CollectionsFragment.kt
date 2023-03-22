@@ -31,7 +31,6 @@ class CollectionsFragment : Fragment() {
     private val viewModel: CollectionsViewModel by viewModels()
     private lateinit var photoAdapter: PhotoAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
