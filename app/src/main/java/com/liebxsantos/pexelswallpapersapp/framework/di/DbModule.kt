@@ -2,10 +2,11 @@ package com.liebxsantos.pexelswallpapersapp.framework.di
 
 import android.content.Context
 import androidx.room.Room
+import com.liebxsantos.core.data.DbConstants
+import com.liebxsantos.core.data.repository.dbrepository.GalleryLocalDataSource
 import com.liebxsantos.pexelswallpapersapp.framework.db.dao.WallpapersDao
 import com.liebxsantos.pexelswallpapersapp.framework.db.WallpapersDataBase
-import com.liebxsantos.pexelswallpapersapp.framework.db.repository.DbRepository
-import com.liebxsantos.pexelswallpapersapp.framework.db.repository.DbRepositoryImpl
+import com.liebxsantos.pexelswallpapersapp.framework.local.RoomGalleryDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,17 +18,14 @@ import dagger.hilt.components.SingletonComponent
 object DbModule {
 
     @Provides
-    fun providerWallPapersDataBase(@ApplicationContext app: Context) =
+    fun providerWallPapersDataBase(@ApplicationContext app: Context): WallpapersDataBase =
         Room.databaseBuilder(
             app,
             WallpapersDataBase::class.java,
-            "wallpapers_db"
+            DbConstants.APP_DATA_BASE_NAME
         ).build()
 
     @Provides
     fun providerWallpapersDao(db: WallpapersDataBase) =  db.wallpapersDao()
-
-    @Provides
-    fun providerDbRepository(dao: WallpapersDao): DbRepository = DbRepositoryImpl(dao)
 
 }

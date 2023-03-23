@@ -12,7 +12,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface RepositoryModule {
+interface WallpapersRepositoryModule {
 
     @Binds
     fun bindPopularRepository(repository: PopularRepositoryImpl): PopularRepository

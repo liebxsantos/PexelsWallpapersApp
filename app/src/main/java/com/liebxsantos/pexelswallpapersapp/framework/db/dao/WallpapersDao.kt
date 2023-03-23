@@ -1,9 +1,8 @@
 package com.liebxsantos.pexelswallpapersapp.framework.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
+import com.liebxsantos.core.data.DbConstants
+import com.liebxsantos.core.domain.model.PhotoDomain
 import com.liebxsantos.pexelswallpapersapp.framework.db.entity.PhotoEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -11,12 +10,11 @@ import kotlinx.coroutines.flow.Flow
 interface WallpapersDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(entity: PhotoEntity): Long
+    suspend fun insert(entity: PhotoEntity)
 
-    @Query("SELECT * FROM photo_table")
-    suspend fun getAllPhotos(): Flow<List<PhotoEntity>>
+    @Query("SELECT * FROM ${DbConstants.PHOTO_TABLE_NAME}")
+    fun getAllPhotos(): Flow<List<PhotoEntity>>
 
-    @Query("DELETE FROM photo_table WHERE id = :id")
-    suspend fun deleteById(id: Long)
-
+    @Delete
+    suspend fun delete(entity: PhotoEntity)
 }

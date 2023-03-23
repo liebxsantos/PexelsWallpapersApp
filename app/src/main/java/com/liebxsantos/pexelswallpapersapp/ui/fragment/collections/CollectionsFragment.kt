@@ -55,7 +55,7 @@ class CollectionsFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        photoAdapter = PhotoAdapter(::detail)
+        photoAdapter = PhotoAdapter(::detail, ::insertData)
         val gridLayoutManager = GridLayoutManager(context, 3)
 
         with(binding.recyclerView) {
@@ -87,9 +87,13 @@ class CollectionsFragment : Fragment() {
     }
 
     private fun detail(photo: PhotoDomain) {
-        val data = arrayOf(photo.srcDomain.original, photo.description)
+        val data = arrayOf(photo.srcDomain?.original, photo.description)
         findNavController().navigate(
             MainFragmentDirections.actionMainFragmentToDownloadFragment(data)
         )
+    }
+
+    private fun insertData(photo: PhotoDomain) {
+//        viewModel.favoritePhoto(photo)
     }
 }
