@@ -8,6 +8,7 @@ import com.liebxsantos.core.domain.model.PhotoDomain
 import com.liebxsantos.pexelswallpapersapp.R
 import com.liebxsantos.pexelswallpapersapp.databinding.ItemPhotoBinding
 import com.liebxsantos.pexelswallpapersapp.ui.extensions.getBitmap
+import com.liebxsantos.pexelswallpapersapp.ui.extensions.loadBlurredImageWithPlaceholder
 import com.liebxsantos.pexelswallpapersapp.ui.extensions.toByteArray
 
 class PhotoViewHolder(
@@ -20,11 +21,16 @@ class PhotoViewHolder(
     private val name = itemBinding.name
 
     fun bind(photo: PhotoDomain) {
-        Glide.with(itemView.context)
-            .load(photo.srcDomain?.original)
-            .centerCrop()
-            .fallback(R.drawable.baseline_broken)
-            .into(image)
+        image.loadBlurredImageWithPlaceholder(
+            imageUrl = photo.srcDomain?.original,
+            placeholderColor = photo.avgColor
+        )
+
+//        Glide.with(itemView.context)
+//            .load(photo.srcDomain?.original)
+//            .centerCrop()
+//            .fallback(R.drawable.baseline_broken)
+//            .into(image)
 
         name.text = photo.photographer
         itemView.setOnClickListener { clickCallback.invoke(photo) }
