@@ -51,16 +51,10 @@ class GalleryFragment : Fragment() {
 //        binding.switchId.setOnCheckedChangeListener { _, isChecked ->
 //            if (isChecked){
 //                Log.i("WORK", isChecked.toString())
-//                WorkerTest.start(workManager)
 //                start(workManager)
-//
-//
 //            } else {
 //                Log.i("WORK", isChecked.toString())
 //                cancel(workManager)
-//
-//
-//
 //                WorkerTest.cancel(workManager)
 //            }
 //        }
@@ -129,12 +123,6 @@ class GalleryFragment : Fragment() {
         val wallpaperWorker = PeriodicWorkRequest.Builder(WorkerTest::class.java, 1, TimeUnit.MINUTES)
             .setConstraints(constraints)
             .build()
-
-//        workManager.enqueue(
-////            WORK_NAME,
-////            ExistingPeriodicWorkPolicy.UPDATE,
-//            wallpaperWorker
-//        )
 
         workManager.enqueueUniquePeriodicWork(
             WORK_NAME,
