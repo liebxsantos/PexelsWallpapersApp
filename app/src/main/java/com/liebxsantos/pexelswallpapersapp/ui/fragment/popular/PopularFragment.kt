@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MOD
 import com.google.android.material.snackbar.Snackbar
 import com.liebxsantos.core.domain.model.PhotoDomain
 import com.liebxsantos.pexelswallpapersapp.databinding.FragmentPopularBinding
-import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.PhotoAdapter
+import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.photoadapter.PhotoAdapter
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.main.MainFragmentDirections
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.popular.viewmodel.PopularViewModel
 import com.liebxsantos.pexelswallpapersapp.util.animationCancel
@@ -54,7 +54,6 @@ class PopularFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun initAdapter() {
@@ -104,7 +103,7 @@ class PopularFragment : Fragment() {
     }
 
     private fun detail(photo: PhotoDomain) {
-        val data = arrayOf(photo.srcDomain?.original, photo.description)
+        val data = arrayOf(photo.srcDomain?.original, photo.avgColor)
         findNavController().navigate(
             MainFragmentDirections.actionMainFragmentToDownloadFragment(data)
         )

@@ -9,5 +9,5 @@ import javax.inject.Inject
 class GalleryRepositoryImpl @Inject constructor(private val dataSource: GalleryLocalDataSource): GalleryRepository {
     override suspend fun getAllWallpapers(): Flow<List<PhotoDomain>> = dataSource.getAll()
     override suspend fun insert(photoDomain: PhotoDomain) = dataSource.insert(photoDomain)
-    override suspend fun deleteById(photoDomain: PhotoDomain) = dataSource.deleteById(photoDomain)
+    override suspend fun delete(photoDomain: PhotoDomain) = dataSource.deleteById(photoDomain)
 }

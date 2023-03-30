@@ -1,9 +1,10 @@
-package com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter
+package com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.photoadapter
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.liebxsantos.core.domain.model.PhotoDomain
+import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.viewholder.PhotoViewHolder
 
 class PhotoAdapter(
     private val clickCallback: ((photo: PhotoDomain) -> Unit),

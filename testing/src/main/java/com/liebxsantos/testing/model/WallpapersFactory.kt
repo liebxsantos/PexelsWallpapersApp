@@ -30,8 +30,7 @@ class WallpapersFactory {
             small = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&h=130",
             tiny = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"
         ),
-        url = "https://www.pexels.com/photo/wood-summer-garden-house-15575287/",
-        imageBytes = byteArrayOf()
+        url = "https://www.pexels.com/photo/wood-summer-garden-house-15575287/"
     )
 
 }

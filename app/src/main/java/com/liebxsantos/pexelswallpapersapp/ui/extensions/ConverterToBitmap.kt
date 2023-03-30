@@ -5,17 +5,6 @@ import android.graphics.drawable.BitmapDrawable
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.liebxsantos.pexelswallpapersapp.R
-import java.io.ByteArrayOutputStream
-
-fun ImageView.getBitmap(): Bitmap? {
-    return (this.drawable as? BitmapDrawable)?.bitmap
-}
-
-fun Bitmap.toByteArray(): ByteArray {
-    val outputStream = ByteArrayOutputStream()
-    this.compress(Bitmap.CompressFormat.JPEG, 80, outputStream)
-    return outputStream.toByteArray()
-}
 
 fun ImageView.loadBlurredImageWithPlaceholder(
     imageUrl: String?,
@@ -42,5 +31,4 @@ fun ImageView.loadBlurredImageWithPlaceholder(
         .placeholder(placeholderDrawable)
         .fallback(R.drawable.baseline_broken)
         .into(this)
-
 }

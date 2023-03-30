@@ -9,7 +9,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class RoomGalleryDataSource @Inject constructor(private val dao: WallpapersDao): GalleryLocalDataSource {
+class RoomGalleryDataSource @Inject constructor(private val dao: WallpapersDao) :
+    GalleryLocalDataSource {
 
     override suspend fun getAll(): Flow<List<PhotoDomain>> =
         dao.getAllPhotos().map { it.toPhotoDomain() }
@@ -24,7 +25,8 @@ class RoomGalleryDataSource @Inject constructor(private val dao: WallpapersDao):
         PhotoEntity(
             id = this.id ?: 0,
             urlPhoto = this.srcDomain?.original ?: "",
-            imageData = this.imageBytes ?: byteArrayOf(),
+            smallPhoto = this.srcDomain?.small ?: "",
+            avgColor = this.avgColor ?: "",
             photographer = this.photographer ?: ""
         )
 

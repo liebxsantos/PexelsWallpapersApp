@@ -1,6 +1,7 @@
 package com.liebxsantos.pexelswallpapersapp.ui.fragment.popular.viewmodel
 
 import androidx.paging.PagingData
+import com.liebxsantos.core.usecase.insertgalleryusecase.InsertGalleryUseCase
 import com.liebxsantos.core.usecase.popularusecase.GetPopularUseCase
 import com.liebxsantos.testing.MainCoroutineRule
 import com.liebxsantos.testing.model.WallpapersFactory
@@ -27,11 +28,13 @@ class PopularViewModelTest {
 
     @Mock
     lateinit var popularUseCase: GetPopularUseCase
+    @Mock
+    lateinit var insertGalleryUseCase: InsertGalleryUseCase
     private lateinit var popularViewModel: PopularViewModel
 
     @Before
     fun setup() {
-        popularViewModel = PopularViewModel(popularUseCase)
+        popularViewModel = PopularViewModel(popularUseCase, insertGalleryUseCase)
     }
 
     @Test

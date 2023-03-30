@@ -47,6 +47,5 @@ fun Photo.toPhotoDomain(): PhotoDomain =
                     small = this.src.small,
                     tiny = this.src.tiny,
         ),
-        url = this.url,
-        imageBytes = null
+        url = this.url
     )

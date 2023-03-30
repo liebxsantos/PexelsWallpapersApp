@@ -16,7 +16,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.liebxsantos.core.domain.model.PhotoDomain
 import com.liebxsantos.pexelswallpapersapp.databinding.FragmentCollectionsBinding
-import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.PhotoAdapter
+import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.photoadapter.PhotoAdapter
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.collections.viewmodel.CollectionsViewModel
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.main.MainFragmentDirections
 import com.liebxsantos.pexelswallpapersapp.util.animationCancel
