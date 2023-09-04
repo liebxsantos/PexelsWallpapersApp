@@ -1,21 +1,20 @@
 package com.liebxsantos.pexelswallpapersapp.ui.fragment.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.liebxsantos.pexelswallpapersapp.R
 import com.liebxsantos.pexelswallpapersapp.databinding.FragmentMainBinding
+import com.liebxsantos.pexelswallpapersapp.framework.local.Carousel
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.categories.CategoriesFragment
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.collections.CollectionsFragment
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.popular.PopularFragment
 import com.liebxsantos.pexelswallpapersapp.ui.pageradapter.ViewPagerAdapter
-import dagger.hilt.android.AndroidEntryPoint
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
@@ -36,6 +35,7 @@ class MainFragment : Fragment() {
         initToolbar()
         initViewPager()
         initTabLayout()
+        initCarousel()
         detail()
     }
 
@@ -43,6 +43,14 @@ class MainFragment : Fragment() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager){ tab, position ->
             tab.text = tabTitles[position]
         }.attach()
+    }
+
+    private fun initCarousel() {
+        with(binding.carouselViewFlipper) {
+            setOutAnimation(activity, android.R.anim.slide_out_right)
+            setup(Carousel.list)
+            setLayout()
+        }
     }
 
     private fun initToolbar(){
