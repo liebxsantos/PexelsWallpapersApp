@@ -11,5 +11,5 @@ class ApiClient<T>(url: String, okHttpClient: OkHttpClient, converterFactory: Gs
         .addConverterFactory(converterFactory)
         .build()
 
-    fun createApi(apiInterface: Class<T>) = retrofit.create(apiInterface)
+    fun createApi(apiInterface: Class<T>): T = retrofit.create(apiInterface)
 }

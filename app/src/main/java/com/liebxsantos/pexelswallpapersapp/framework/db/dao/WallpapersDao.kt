@@ -2,7 +2,6 @@ package com.liebxsantos.pexelswallpapersapp.framework.db.dao
 
 import androidx.room.*
 import com.liebxsantos.core.data.DbConstants
-import com.liebxsantos.core.domain.model.PhotoDomain
 import com.liebxsantos.pexelswallpapersapp.framework.db.entity.PhotoEntity
 import kotlinx.coroutines.flow.Flow
 

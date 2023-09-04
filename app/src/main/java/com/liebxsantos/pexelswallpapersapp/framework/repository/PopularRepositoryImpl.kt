@@ -1,7 +1,6 @@
 package com.liebxsantos.pexelswallpapersapp.framework.repository
 
 import androidx.paging.PagingSource
-import androidx.paging.PagingState
 import com.liebxsantos.core.data.repository.PopularRemoteDataSource
 import com.liebxsantos.core.data.repository.PopularRepository
 import com.liebxsantos.core.domain.model.PhotoDomain
