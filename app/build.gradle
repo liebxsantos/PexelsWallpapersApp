@@ -8,6 +8,7 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'kotlin-parcelize'
+apply from: "$project.rootDir/jacoco.gradle"
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
@@ -34,11 +35,13 @@ android {
         debug {
             applicationIdSuffix '.debug'
             debuggable true
+            testCoverageEnabled true
         }
 
         staging {
             initWith debug
             minifyEnabled true
+            testCoverageEnabled true
             applicationIdSuffix '.staging'
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro',
                     'proguard-rules-staging.pro'
@@ -47,6 +50,7 @@ android {
         release {
             shrinkResources true
             minifyEnabled true
+            testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 
         }
