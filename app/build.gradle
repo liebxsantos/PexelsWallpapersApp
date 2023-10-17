@@ -8,7 +8,8 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: "androidx.navigation.safeargs"
 apply plugin: 'kotlin-parcelize'
-apply from: "$project.rootDir/jacoco.gradle"
+//apply from: "$project.rootDir/jacoco.gradle"
+apply from: '../jacoco.gradle'
 
 def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
@@ -123,3 +124,17 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
+
+//task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+//    reports {
+//        xml.enabled = true
+//        html.enabled = true
+//    }
+//
+//    def tree = fileTree(dir: "$buildDir/intermediates/classes/debug")
+//    sourceDirectories.from = files('src/main/java')
+//    classDirectories.from = files(tree)
+//    executionData.from = fileTree(dir: "$buildDir", includes: [
+//            "jacoco/testDebugUnitTest.exec",
+//    ])
+//}
