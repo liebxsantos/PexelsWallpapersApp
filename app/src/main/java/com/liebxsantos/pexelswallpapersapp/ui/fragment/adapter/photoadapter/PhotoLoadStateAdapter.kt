@@ -1,4 +1,4 @@
-package com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter
+package com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.photoadapter
 
 import android.view.ViewGroup
 import androidx.paging.LoadState

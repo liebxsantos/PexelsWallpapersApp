@@ -14,9 +14,11 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_SLIDE
+import com.google.android.material.snackbar.Snackbar
 import com.liebxsantos.core.domain.model.PhotoDomain
 import com.liebxsantos.pexelswallpapersapp.databinding.FragmentPopularBinding
-import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.PhotoAdapter
+import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.photoadapter.PhotoAdapter
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.main.MainFragmentDirections
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.popular.viewmodel.PopularViewModel
 import com.liebxsantos.pexelswallpapersapp.util.animationCancel
@@ -43,6 +45,7 @@ class PopularFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
         observeLoadState()
+        observerFavoriteUiState()
 
         lifecycleScope.launch {
             viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -51,11 +54,10 @@ class PopularFragment : Fragment() {
                 }
             }
         }
-
     }
 
     private fun initAdapter() {
-        photoAdapter = PhotoAdapter(::detail)
+        photoAdapter = PhotoAdapter(::detail, ::insertData)
         val gridLayoutManager = GridLayoutManager(context, 3)
 
         with(binding.recyclerView) {
@@ -69,7 +71,8 @@ class PopularFragment : Fragment() {
     private fun observeLoadState() {
         lifecycleScope.launch {
             photoAdapter.loadStateFlow.collectLatest { loadState ->
-                binding.imagePulseAnimation.isVisible = loadState.source.refresh is LoadState.Loading
+                binding.imagePulseAnimation.isVisible =
+                    loadState.source.refresh is LoadState.Loading
                 when (loadState.refresh) {
                     is LoadState.Loading -> {
                         binding.imagePulseAnimation.pulseAnimation()
@@ -86,11 +89,34 @@ class PopularFragment : Fragment() {
         }
     }
 
+    private fun observerFavoriteUiState() {
+        viewModel.favoriteIUiState.observe(viewLifecycleOwner) { favoriteUiState ->
+            when (favoriteUiState) {
+                PopularViewModel.FavoriteUiState.Loading -> 1
+                is PopularViewModel.FavoriteUiState.FavoriteIcon -> { favoriteUiState.icon }
+                is PopularViewModel.FavoriteUiState.FavoritePhoto -> {
+                    if (favoriteUiState.saved) favoriteItemMessage("item salvo")
+                    else favoriteItemMessage("erro ao salvar")
+                }
+            }
+        }
+    }
+
     private fun detail(photo: PhotoDomain) {
-        val data = arrayOf(photo.srcDomain.original, photo.description)
+        val data = arrayOf(photo.srcDomain?.original, photo.avgColor)
         findNavController().navigate(
             MainFragmentDirections.actionMainFragmentToDownloadFragment(data)
         )
+    }
+
+    private fun insertData(photo: PhotoDomain) {
+        viewModel.favoritePhoto(photo)
+    }
+
+    private fun favoriteItemMessage(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+            .setAnimationMode(ANIMATION_MODE_SLIDE)
+            .show()
     }
 
 }

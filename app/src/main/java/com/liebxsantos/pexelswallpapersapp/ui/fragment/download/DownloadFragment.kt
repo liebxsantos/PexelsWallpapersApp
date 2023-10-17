@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.liebxsantos.pexelswallpapersapp.R
 import com.liebxsantos.pexelswallpapersapp.databinding.FragmentDownloadBinding
+import com.liebxsantos.pexelswallpapersapp.ui.extensions.loadBlurredImageWithPlaceholder
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.BottomSheetDownload
 
 class DownloadFragment : Fragment() {
@@ -26,12 +27,12 @@ class DownloadFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadImage(args.image[0])
+        loadImage(args.image[0], args.image[1])
         backButton()
         bottomSheet()
     }
 
-    private fun loadImage(url: String) {
+    private fun loadImage(url: String, avgColor: String) {
         Glide.with(requireContext())
             .load(url)
             .centerCrop()

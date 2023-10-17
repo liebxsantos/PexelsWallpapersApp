@@ -1,20 +1,20 @@
 package com.liebxsantos.pexelswallpapersapp.ui.fragment.main
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.liebxsantos.pexelswallpapersapp.R
 import com.liebxsantos.pexelswallpapersapp.databinding.FragmentMainBinding
+import com.liebxsantos.pexelswallpapersapp.framework.local.Carousel
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.categories.CategoriesFragment
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.collections.CollectionsFragment
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.popular.PopularFragment
 import com.liebxsantos.pexelswallpapersapp.ui.pageradapter.ViewPagerAdapter
-import dagger.hilt.android.AndroidEntryPoint
 
 class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
@@ -35,6 +35,8 @@ class MainFragment : Fragment() {
         initToolbar()
         initViewPager()
         initTabLayout()
+        initCarousel()
+        detail()
     }
 
     private fun initTabLayout(){
@@ -43,15 +45,29 @@ class MainFragment : Fragment() {
         }.attach()
     }
 
+    private fun initCarousel() {
+        with(binding.carouselViewFlipper) {
+            setOutAnimation(activity, android.R.anim.slide_out_right)
+            setup(Carousel.list)
+            setLayout()
+        }
+    }
+
     private fun initToolbar(){
         binding.toolbar.title = "Wallpapers"
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
     }
 
     private fun initViewPager(){
-        val pagerAdapter = ViewPagerAdapter(context as FragmentActivity, fragments)
+        val pagerAdapter = ViewPagerAdapter(requireActivity(), fragments)
         binding.run {
             viewPager.adapter = pagerAdapter
+        }
+    }
+
+    private fun detail() {
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_galleryFragment)
         }
     }
 }

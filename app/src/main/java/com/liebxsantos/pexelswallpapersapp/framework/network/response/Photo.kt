@@ -33,9 +33,7 @@ fun Photo.toPhotoDomain(): PhotoDomain =
     PhotoDomain(
         description = this.alt,
         avgColor = this.avgColor,
-        height = this.height,
         id = this.id,
-        liked = this.liked,
         photographer = this.photographer,
         photographerId = this.photographerId,
         photographerUrl = this.photographerUrl,
@@ -49,6 +47,5 @@ fun Photo.toPhotoDomain(): PhotoDomain =
                     small = this.src.small,
                     tiny = this.src.tiny,
         ),
-        url = this.url,
-        width = this.width
+        url = this.url
     )

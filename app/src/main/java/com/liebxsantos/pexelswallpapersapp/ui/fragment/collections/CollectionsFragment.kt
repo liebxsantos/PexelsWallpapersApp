@@ -16,7 +16,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.liebxsantos.core.domain.model.PhotoDomain
 import com.liebxsantos.pexelswallpapersapp.databinding.FragmentCollectionsBinding
-import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.PhotoAdapter
+import com.liebxsantos.pexelswallpapersapp.ui.fragment.adapter.photoadapter.PhotoAdapter
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.collections.viewmodel.CollectionsViewModel
 import com.liebxsantos.pexelswallpapersapp.ui.fragment.main.MainFragmentDirections
 import com.liebxsantos.pexelswallpapersapp.util.animationCancel
@@ -30,7 +30,6 @@ class CollectionsFragment : Fragment() {
     private lateinit var binding: FragmentCollectionsBinding
     private val viewModel: CollectionsViewModel by viewModels()
     private lateinit var photoAdapter: PhotoAdapter
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -56,7 +55,7 @@ class CollectionsFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        photoAdapter = PhotoAdapter(::detail)
+        photoAdapter = PhotoAdapter(::detail, ::insertData)
         val gridLayoutManager = GridLayoutManager(context, 3)
 
         with(binding.recyclerView) {
@@ -88,9 +87,13 @@ class CollectionsFragment : Fragment() {
     }
 
     private fun detail(photo: PhotoDomain) {
-        val data = arrayOf(photo.srcDomain.original, photo.description)
+        val data = arrayOf(photo.srcDomain?.original, photo.description)
         findNavController().navigate(
             MainFragmentDirections.actionMainFragmentToDownloadFragment(data)
         )
+    }
+
+    private fun insertData(photo: PhotoDomain) {
+//        viewModel.favoritePhoto(photo)
     }
 }
