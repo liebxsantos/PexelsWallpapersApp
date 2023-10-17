@@ -73,6 +73,8 @@ class GalleryFragment : Fragment() {
                 GalleryViewModel.UiState.Error -> {
                     snackBarMessage("Erro ao tentar deletar")
                 }
+
+                else -> {}
             }
         }
     }
